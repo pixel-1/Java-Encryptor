@@ -48,12 +48,16 @@ public class Encryptor {
         String[] str = new String[input.size()];
         int[] r = new int[input.size()];
         char[] c = new char[input.size()];
+        int n=0;
 
         for(int i=0; i<input.size(); i++) {
             c[i] = input.get(i).charAt(0);
             r[i] = (int)c[i];
 
-            if(this.t>this.n) this.t=this.s;
+            if(n==this.n) {
+                this.t=this.s;
+                n = 0;
+            }
             if(r[i] == 32) {
                 str[i] = Character.toString((char)r[i]);
                 continue;
@@ -64,6 +68,7 @@ public class Encryptor {
 
             str[i] = Character.toString((char)r[i]);
             this.t+=this.s;
+            n++;
         }
         return String.join("", str);
     }
@@ -73,12 +78,16 @@ public class Encryptor {
         String[] str = new String[input.size()];
         int[] r = new int[input.size()];
         char[] c = new char[input.size()];
+        int n=0;
 
         for(int i=0; i<input.size(); i++) {
             c[i] = input.get(i).charAt(0);
             r[i] = (int)c[i];
 
-            if(this.t>this.n) this.t=this.s;
+            if(n==this.n) {
+                this.t=this.s;
+                n = 0;
+            }
             if(r[i] == 32) {
                 str[i] = Character.toString((char)r[i]);
                 continue;
@@ -89,6 +98,7 @@ public class Encryptor {
 
             str[i] = Character.toString((char)r[i]);
             this.t+=this.s;
+            n++;
         }
         return String.join("", str);
     }
