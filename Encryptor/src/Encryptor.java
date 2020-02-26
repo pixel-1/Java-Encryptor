@@ -43,7 +43,7 @@ public class Encryptor {
         }
     }
 
-    public String encrypt() {
+    public String encrypt(int k) {
         this.t = this.s;
         String[] str = new String[input.size()];
         int[] r = new int[input.size()];
@@ -63,38 +63,8 @@ public class Encryptor {
                 continue;
             }
 
-            r[i] += t;
-            r[i] = (r[i] > 122) ? r[i]-26 : r[i];
-
-            str[i] = Character.toString((char)r[i]);
-            this.t+=this.s;
-            n++;
-        }
-        return String.join("", str);
-    }
-
-    public String decrypt() {
-        this.t= s;
-        String[] str = new String[input.size()];
-        int[] r = new int[input.size()];
-        char[] c = new char[input.size()];
-        int n=0;
-
-        for(int i=0; i<input.size(); i++) {
-            c[i] = input.get(i).charAt(0);
-            r[i] = (int)c[i];
-
-            if(n==this.n) {
-                this.t=this.s;
-                n = 0;
-            }
-            if(r[i] == 32) {
-                str[i] = Character.toString((char)r[i]);
-                continue;
-            }
-
-            r[i] -= t;
-            r[i] = (r[i] < 97) ? r[i]+26 : r[i];
+            r[i] = k==1 ? r[i]+t : r[i]-t;
+            r[i] = (r[i] > 122) && k==1 ? r[i]-26 : (r[i] < 97) && k==2 ? r[i]+26: r[i];
 
             str[i] = Character.toString((char)r[i]);
             this.t+=this.s;
