@@ -64,7 +64,7 @@ public class Encryptor {
             }
 
             r[i] = k==1 ? r[i]+t : r[i]-t;
-            r[i] = (r[i] > 122) && k==1 ? r[i]-26 : (r[i] < 97) && k==2 ? r[i]+26: r[i];
+            r[i] = (r[i] > 122) ? r[i]-26 : (r[i] < 97) ? r[i]+26: r[i];
 
             str[i] = Character.toString((char)r[i]);
             this.t+=this.s;
