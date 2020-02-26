@@ -31,7 +31,7 @@ public class MainClass {
         System.out.print("\n~Enter text to encrypt: ");
         String x=  scan.nextLine();
         enc.setInput(x);
-        System.out.println("Encryption: " + enc.encrypt());
+        System.out.println("Encryption: " + enc.encrypt(1));
     }
 
     public static void case2() {
@@ -39,7 +39,7 @@ public class MainClass {
         System.out.print("\n~Enter text to decrypt: ");
         String x=  scan.nextLine();
         enc.setInput(x);
-        System.out.println("Decryption:" + enc.decrypt());
+        System.out.println("Decryption:" + enc.encrypt(2));
     }
 
     public static void case3() {
