@@ -47,12 +47,10 @@ public class Encryptor {
         this.t = this.s;
         String[] str = new String[input.size()];
         int[] r = new int[input.size()];
-        char[] c = new char[input.size()];
         int n=0;
 
         for(int i=0; i<input.size(); i++) {
-            c[i] = input.get(i).charAt(0);
-            r[i] = (int)c[i];
+            r[i] = (int)input.get(i).charAt(0);
 
             if(n==this.n) {
                 this.t=this.s;
