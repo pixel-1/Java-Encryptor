@@ -15,8 +15,7 @@ public class Encryptor {
     public void setN(int n) {
         
         //Value of shifts can't be greater than 26
-        while(n > 26) n-=26;
-        this.n = n;
+        this.n = n%26;
     }
 
     public int getN() {
@@ -26,8 +25,7 @@ public class Encryptor {
     public void setS(int s) {
         
         //Value of shifts can't be greater than 26
-        while(s > 26) s-=26;
-        this.s = s;
+        this.s = s%26;
     }
 
     public int getS() {
@@ -59,9 +57,9 @@ public class Encryptor {
         this.key = String.join("", c);
     }
 
-    //Encryption using number values
-    //k = 1 -> Encrypt
-    //k = 2 -> Decrypt
+    /**Encryption using number values <p>
+     * k = 1 -> Encrypt <p>
+     * k = 2 -> Decrypt */
     public String encrypt(int k) {
         
         //Setup the counters and no. of shifts
@@ -106,9 +104,9 @@ public class Encryptor {
         return String.join("", str);
     }
 
-    //Encryption using keyword
-    //k = 1 -> Encrypt
-    //k = 2 -> Decrypt
+    /**Encryption using keyword <p>
+     * k = 1 -> Encrypt <p>
+     * k = 2 -> Decrypt */
     public String encryptKey(int k) {
         
         //setup the counter
@@ -124,7 +122,10 @@ public class Encryptor {
             
             //Reset counter if last letter of keyword is reached
             if (c == key.length()) c=0;
-            this.t = ((int)this.key.charAt(c))-96;
+            
+            //obtain upper and lower case letters' positions
+            if(((int)this.key.charAt(c)) > 64 && ((int)this.key.charAt(c)) < 91) this.t = ((int)this.key.charAt(c)) -63;
+            if(((int)this.key.charAt(c)) > 96 && ((int)this.key.charAt(c)) < 123) this.t = ((int)this.key.charAt(c)) -96;
             
             //Uppercase letters
             if (r[i] > 64 && r[i] < 91) {
